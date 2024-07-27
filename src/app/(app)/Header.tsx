@@ -7,11 +7,11 @@ export default function Header() {
       <MessageSquareCodeIcon />
       <Link href="/" className="text-xl font-bold">
         <h1>Rob Granatstein</h1>
-      </Link>{' '}
-      |
-      <Link href="/add" className="text-xl font-light">
-        Biography Page
       </Link>
+      {/* |
+      <Link href="/add" className="text-xl font-light">
+        Political Stuff
+      </Link> */}
     </header>
   )
 }
