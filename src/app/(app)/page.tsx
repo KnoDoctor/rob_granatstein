@@ -40,41 +40,24 @@ const Page = async () => {
       <section className="w-full py-6 md:py-12 lg:py-24">
         <div className="container px-4 md:px-6 grid gap-6 md:grid-cols-2">
           <div>
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">About Jane Doe</h2>
-            <p className="mt-4 text-muted-foreground">
-              Jane Doe is a lifelong public servant with a proven track record of delivering results
-              for her community. As a state representative, she has championed legislation to
-              improve education, protect the environment, and support small businesses. Jane is
-              known for her bipartisan approach and ability to bring people together to solve
-              complex problems.
-            </p>
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">
+              {page?.docs?.[0]?.key_message_1_title}
+            </h2>
+            <p className="mt-4 text-muted-foreground">{page?.docs?.[0]?.key_message_1_body}</p>
           </div>
           <div>
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">
-              Key Policy Positions
+              {page?.docs?.[0]?.key_messages_title}
             </h2>
             <ul className="mt-4 space-y-2 text-muted-foreground">
-              <li>
-                <h3 className="font-medium">Education</h3>
-                <p>
-                  Increase funding for public schools, expand access to early childhood education,
-                  and invest in teacher professional development.
-                </p>
-              </li>
-              <li>
-                <h3 className="font-medium">Environment</h3>
-                <p>
-                  Promote renewable energy, protect natural habitats, and combat climate change
-                  through sustainable policies.
-                </p>
-              </li>
-              <li>
-                <h3 className="font-medium">Economy</h3>
-                <p>
-                  Support small businesses, invest in infrastructure, and create jobs in emerging
-                  industries.
-                </p>
-              </li>
+              {page?.docs?.[0]?.key_messages_list?.map((key_message) => {
+                return (
+                  <li key={key_message?.id}>
+                    <h3 className="font-medium">{key_message?.key_message_title}</h3>
+                    <p>{key_message?.key_message_body}</p>
+                  </li>
+                )
+              })}
             </ul>
           </div>
         </div>
@@ -83,31 +66,23 @@ const Page = async () => {
         <div className="container px-4 md:px-6 grid gap-6 md:grid-cols-2">
           <div className="space-y-4">
             <div className="bg-background rounded-md p-6 shadow-sm h-48">
-              <h3 className="text-xl font-semibold">Volunteer</h3>
-              <p className="mt-2 text-muted-foreground">
-                Join our team of dedicated volunteers and help make a difference in your community.
-              </p>
+              <h3 className="text-xl font-semibold"> {page?.docs?.[0]?.cta_1_title}</h3>
+              <p className="mt-2 text-muted-foreground">{page?.docs?.[0]?.cta_1_body}</p>
               <Button variant="outline" className="mt-4">
                 Sign Up
               </Button>
             </div>
             <div className="bg-background rounded-md p-6 shadow-sm h-48">
-              <h3 className="text-xl font-semibold">Donate</h3>
-              <p className="mt-2 text-muted-foreground">
-                Your financial support helps us continue our important work. Every contribution
-                makes a difference.
-              </p>
+              <h3 className="text-xl font-semibold">{page?.docs?.[0]?.cta_2_title}</h3>
+              <p className="mt-2 text-muted-foreground">{page?.docs?.[0]?.cta_1_body}</p>
               <Button variant="outline" className="mt-4">
                 Donate
               </Button>
             </div>
           </div>
           <div className="bg-background rounded-md p-6 shadow-sm">
-            <h3 className="text-xl font-semibold">Contact</h3>
-            <p className="mt-2 text-muted-foreground">
-              Have a question or want to learn more? Get in touch with us and we&apos;ll be happy to
-              assist.
-            </p>
+            <h3 className="text-xl font-semibold">{page?.docs?.[0]?.contact_form_title}</h3>
+            <p className="mt-2 text-muted-foreground">{page?.docs?.[0]?.contact_form_body}</p>
             <form className="mt-4 grid gap-4">
               <Input type="text" placeholder="Name" className="w-full" />
               <Input type="email" placeholder="Email" className="w-full" />

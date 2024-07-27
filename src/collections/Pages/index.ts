@@ -40,13 +40,6 @@ export const PagesCollection: CollectionConfig = {
       required: true,
     },
     {
-      name: 'bio_photo',
-      label: 'Bio Photo',
-      type: 'upload',
-      relationTo: 'media',
-      required: true,
-    },
-    {
       name: 'page_title',
       type: 'text',
     },
@@ -56,6 +49,63 @@ export const PagesCollection: CollectionConfig = {
     },
     {
       name: 'banner_subtitle',
+      type: 'text',
+    },
+    {
+      name: 'bio_photo',
+      label: 'Bio Photo',
+      type: 'upload',
+      relationTo: 'media',
+      required: true,
+    },
+    {
+      name: 'key_message_1_title',
+      type: 'text',
+    },
+    {
+      name: 'key_message_1_body',
+      type: 'textarea',
+    },
+    {
+      name: 'key_messages_title',
+      type: 'text',
+    },
+    {
+      name: 'key_messages_list',
+      type: 'array',
+      fields: [
+        {
+          name: 'key_message_title',
+          type: 'text',
+        },
+        {
+          name: 'key_message_body',
+          type: 'textarea',
+        },
+      ],
+    },
+    {
+      name: 'cta_1_title',
+      type: 'text',
+    },
+    {
+      name: 'cta_1_body',
+      type: 'text',
+    },
+    {
+      name: 'cta_2_title',
+      type: 'text',
+    },
+    {
+      name: 'cta_2_body',
+      type: 'text',
+    },
+    {
+      name: 'contact_form_title',
+      type: 'text',
+    },
+    {
+      name: 'contact_form_body',
       type: 'text',
     },
     {
