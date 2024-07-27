@@ -9,7 +9,6 @@ import configPromise from '@payload-config'
 
 import type { Media } from 'payload-types'
 import Image from 'next/image'
-import { FlipWords } from '@/components/ui_aceternity/FlipWords'
 
 const Page = async () => {
   const payload = await getPayloadHMR({ config: configPromise })
@@ -26,7 +25,6 @@ const Page = async () => {
           <div className="space-y-4">
             <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
               {page?.docs?.[0]?.banner_title}
-              {/* <FlipWords words={['t', 'te', 'tes']} /> */}
             </h1>
             <p className="text-xl font-medium">{page?.docs?.[0]?.banner_subtitle}</p>
           </div>
