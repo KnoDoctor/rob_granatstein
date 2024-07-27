@@ -19,6 +19,7 @@ import {
   UnorderedListFeature,
   UploadFeature,
 } from '@payloadcms/richtext-lexical'
+import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
 //import { slateEditor } from '@payloadcms/richtext-slate'
 // import { mongooseAdapter } from '@payloadcms/db-mongodb'
 import { buildConfig } from 'payload'
@@ -63,6 +64,16 @@ export default buildConfig({
       connectionString: process.env.POSTGRES_URI || '',
     },
   }),
+  plugins: process.env.BLOB_READ_WRITE_TOKEN
+    ? [
+        vercelBlobStorage({
+          collections: {
+            ['media']: true,
+          },
+          token: process.env.BLOB_READ_WRITE_TOKEN || '',
+        }),
+      ]
+    : [],
   // db: mongooseAdapter({
   //   url: process.env.MONGODB_URI || '',
   // }),

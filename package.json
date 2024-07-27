@@ -25,6 +25,7 @@
     "@payloadcms/next": "3.0.0-beta.67",
     "@payloadcms/richtext-lexical": "3.0.0-beta.67",
     "@payloadcms/richtext-slate": "3.0.0-beta.67",
+    "@payloadcms/storage-vercel-blob": "3.0.0-beta.29",
     "@payloadcms/ui": "3.0.0-beta.67",
     "@radix-ui/react-slot": "^1.1.0",
     "babel-plugin-react-compiler": "^0.0.0-experimental-592953e-20240517",
