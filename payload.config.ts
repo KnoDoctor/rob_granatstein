@@ -61,7 +61,7 @@ export default buildConfig({
   },
   db: postgresAdapter({
     pool: {
-      connectionString: process.env.POSTGRES_URI || '',
+      connectionString: process.env.POSTGRES_URL || '',
     },
   }),
   plugins: process.env.BLOB_READ_WRITE_TOKEN
