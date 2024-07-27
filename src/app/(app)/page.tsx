@@ -1,3 +1,5 @@
+export const revalidate = 5
+
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -7,8 +9,6 @@ import configPromise from '@payload-config'
 
 import type { Media } from 'payload-types'
 import Image from 'next/image'
-
-export const revalidate = 10
 
 const Page = async () => {
   const payload = await getPayloadHMR({ config: configPromise })
