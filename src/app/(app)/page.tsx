@@ -27,7 +27,7 @@ const Page = async () => {
             <p className="text-xl font-medium">{page?.docs?.[0]?.banner_subtitle}</p>
           </div>
           <div className="flex justify-center">
-            <Image
+            <img
               src={(page?.docs?.[0]?.bio_photo as Media)?.url ?? ''}
               width="300"
               height="300"
