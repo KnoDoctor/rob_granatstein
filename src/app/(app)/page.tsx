@@ -93,7 +93,7 @@ const Page = () => {
           <div className="bg-background rounded-md p-6 shadow-sm">
             <h3 className="text-xl font-semibold">Contact</h3>
             <p className="mt-2 text-muted-foreground">
-              Have a question or want to learn more? Get in touch with us and we'll be happy to
+              Have a question or want to learn more? Get in touch with us and we&apos;ll be happy to
               assist.
             </p>
             <form className="mt-4 grid gap-4">
