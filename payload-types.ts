@@ -67,7 +67,9 @@ export interface Page {
   id: number;
   slug: string;
   bio_photo: number | Media;
-  title?: string | null;
+  page_title?: string | null;
+  banner_title?: string | null;
+  banner_subtitle?: string | null;
   content?: {
     root: {
       type: string;

@@ -47,7 +47,15 @@ export const PagesCollection: CollectionConfig = {
       required: true,
     },
     {
-      name: 'title',
+      name: 'page_title',
+      type: 'text',
+    },
+    {
+      name: 'banner_title',
+      type: 'text',
+    },
+    {
+      name: 'banner_subtitle',
       type: 'text',
     },
     {

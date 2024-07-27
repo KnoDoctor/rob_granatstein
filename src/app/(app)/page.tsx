@@ -2,21 +2,33 @@ import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
+import { getPayloadHMR } from '@payloadcms/next/utilities'
+import configPromise from '@payload-config'
 
-const Page = () => {
+import type { Media } from 'payload-types'
+import Image from 'next/image'
+
+const Page = async () => {
+  const payload = await getPayloadHMR({ config: configPromise })
+
+  const page = await payload.find({
+    collection: 'pages',
+    page: 1,
+  })
+
   return (
     <main className="flex-1">
       <section className="w-full py-12 md:py-24 lg:py-32 bg-primary text-primary-foreground">
         <div className="container px-4 md:px-6 grid gap-6 md:grid-cols-2 items-center">
           <div className="space-y-4">
             <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
-              Rob Granatstein
+              {page?.docs?.[0]?.banner_title}
             </h1>
-            <p className="text-xl font-medium">Inspiring Change, Building a Better Future</p>
+            <p className="text-xl font-medium">{page?.docs?.[0]?.banner_subtitle}</p>
           </div>
           <div className="flex justify-center">
-            <img
-              src="https://media.licdn.com/dms/image/C5603AQEQgEsr0VJ4hw/profile-displayphoto-shrink_800_800/0/1517732132415?e=1727308800&v=beta&t=vbCX2F0FuVlEs7VCB-qJhMhhqp5yXzT7F7m7bJHzi-w"
+            <Image
+              src={(page?.docs?.[0]?.bio_photo as Media)?.url ?? ''}
               width="300"
               height="300"
               alt="Candidate"
