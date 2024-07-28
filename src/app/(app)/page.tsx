@@ -20,7 +20,7 @@ const Page = async () => {
 
   return (
     <main className="flex-1">
-      <section className="w-full bg-[url('https://images.unsplash.com/photo-1665494131942-b5fdc8985e18?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-cover bg-center bg-no-repeat py-24 md:py-32 lg:py-40">
+      {/* <section className="w-full bg-[url('https://images.unsplash.com/photo-1665494131942-b5fdc8985e18?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-cover bg-center bg-no-repeat py-24 md:py-32 lg:py-40">
         <div className="container flex flex-col items-center justify-center space-y-6 text-center">
           <div className="space-y-2">
             <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl text-slate-100">
@@ -30,9 +30,9 @@ const Page = async () => {
               {page?.docs?.[0]?.banner_subtitle}
             </p>
           </div>
-          {/* <p className="max-w-[600px] text-slate-100 md:text-xl">
+          <p className="max-w-[600px] text-slate-100 md:text-xl">
             Bringing a fresh perspectives and a commitment to political engagement to the OLP.
-          </p> */}
+          </p>
           <Link
             href="#"
             className="inline-flex h-10 items-center justify-center rounded-md bg-red-600 px-8 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-red-600/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
@@ -41,8 +41,8 @@ const Page = async () => {
             Connect with Rob
           </Link>
         </div>
-      </section>
-      {/* <section className="w-full py-12 md:py-24 lg:py-32 bg-slate-100 ">
+      </section> */}
+      <section className="w-full py-12 md:py-24 lg:py-32 bg-slate-100 ">
         <div className="container px-4 md:px-6 grid gap-6 md:grid-cols-2 items-center">
           <div className="space-y-2">
             <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
@@ -60,7 +60,7 @@ const Page = async () => {
             />
           </div>
         </div>
-      </section> */}
+      </section>
       <section className="w-full py-6 md:py-12 lg:py-24">
         <div className="container px-4 md:px-6 grid gap-6 md:grid-cols-2">
           <div>
