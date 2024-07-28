@@ -45,6 +45,9 @@ export default buildConfig({
     },
     PagesCollection,
     {
+      access: {
+        read: () => true,
+      },
       slug: 'media',
       upload: true,
       fields: [
