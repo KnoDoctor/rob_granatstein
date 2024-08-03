@@ -19,8 +19,6 @@ const Page = async () => {
     page: 1,
   })
 
-  console.log(page?.docs?.[0])
-
   return (
     <main className="flex-1">
       {/* <section className="w-full bg-[url('https://images.unsplash.com/photo-1665494131942-b5fdc8985e18?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-cover bg-center bg-no-repeat py-24 md:py-32 lg:py-40">
@@ -54,7 +52,7 @@ const Page = async () => {
             <p className="text-xl font-medium">{page?.docs?.[0]?.banner_subtitle}</p>
           </div>
           <div className="flex justify-center">
-            <img
+            <Image
               src={(page?.docs?.[0]?.bio_photo as Media)?.url ?? ''}
               width="300"
               height="300"
@@ -65,7 +63,7 @@ const Page = async () => {
         </div>
       </section>
       <section className="w-full py-6 md:py-12 lg:py-24">
-        <div className="container px-4 md:px-6 grid gap-6 md:grid-cols-2">
+        <div className="container px-4 md:px-6 grid gap-16 md:grid-cols-2">
           <div>
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl underline decoration-red-600">
               {page?.docs?.[0]?.key_message_1_title}
