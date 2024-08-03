@@ -35,6 +35,7 @@
     "embla-carousel-react": "^8.1.7",
     "framer-motion": "^11.3.19",
     "graphql": "^16.8.2",
+    "html-react-parser": "^5.1.12",
     "lucide-react": "^0.416.0",
     "next": "15.0.0-canary.58",
     "payload": "3.0.0-beta.67",

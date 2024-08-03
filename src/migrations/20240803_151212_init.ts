@@ -15,10 +15,30 @@ await payload.db.drizzle.execute(sql`
 	"lock_until" timestamp(3) with time zone
 );
 
+CREATE TABLE IF NOT EXISTS "pages_key_messages_list" (
+	"_order" integer NOT NULL,
+	"_parent_id" integer NOT NULL,
+	"id" varchar PRIMARY KEY NOT NULL,
+	"key_message_title" varchar,
+	"key_message_body" jsonb
+);
+
 CREATE TABLE IF NOT EXISTS "pages" (
 	"id" serial PRIMARY KEY NOT NULL,
-	"title" varchar,
-	"content" jsonb,
+	"slug" varchar NOT NULL,
+	"page_title" varchar,
+	"banner_title" varchar,
+	"banner_subtitle" varchar,
+	"bio_photo_id" integer NOT NULL,
+	"key_message_1_title" varchar,
+	"key_message_1_body" jsonb,
+	"key_messages_title" varchar,
+	"cta_1_title" varchar,
+	"cta_1_body" jsonb,
+	"cta_2_title" varchar,
+	"cta_2_body" jsonb,
+	"contact_form_title" varchar,
+	"contact_form_body" jsonb,
 	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
 	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
 );
@@ -65,6 +85,8 @@ CREATE TABLE IF NOT EXISTS "payload_migrations" (
 
 CREATE INDEX IF NOT EXISTS "users_created_at_idx" ON "users" ("created_at");
 CREATE UNIQUE INDEX IF NOT EXISTS "users_email_idx" ON "users" ("email");
+CREATE INDEX IF NOT EXISTS "pages_key_messages_list_order_idx" ON "pages_key_messages_list" ("_order");
+CREATE INDEX IF NOT EXISTS "pages_key_messages_list_parent_id_idx" ON "pages_key_messages_list" ("_parent_id");
 CREATE INDEX IF NOT EXISTS "pages_created_at_idx" ON "pages" ("created_at");
 CREATE INDEX IF NOT EXISTS "media_created_at_idx" ON "media" ("created_at");
 CREATE UNIQUE INDEX IF NOT EXISTS "media_filename_idx" ON "media" ("filename");
@@ -74,6 +96,18 @@ CREATE INDEX IF NOT EXISTS "payload_preferences_rels_order_idx" ON "payload_pref
 CREATE INDEX IF NOT EXISTS "payload_preferences_rels_parent_idx" ON "payload_preferences_rels" ("parent_id");
 CREATE INDEX IF NOT EXISTS "payload_preferences_rels_path_idx" ON "payload_preferences_rels" ("path");
 CREATE INDEX IF NOT EXISTS "payload_migrations_created_at_idx" ON "payload_migrations" ("created_at");
+DO $$ BEGIN
+ ALTER TABLE "pages_key_messages_list" ADD CONSTRAINT "pages_key_messages_list_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "pages"("id") ON DELETE cascade ON UPDATE no action;
+EXCEPTION
+ WHEN duplicate_object THEN null;
+END $$;
+
+DO $$ BEGIN
+ ALTER TABLE "pages" ADD CONSTRAINT "pages_bio_photo_id_media_id_fk" FOREIGN KEY ("bio_photo_id") REFERENCES "media"("id") ON DELETE set null ON UPDATE no action;
+EXCEPTION
+ WHEN duplicate_object THEN null;
+END $$;
+
 DO $$ BEGIN
  ALTER TABLE "payload_preferences_rels" ADD CONSTRAINT "payload_preferences_rels_parent_fk" FOREIGN KEY ("parent_id") REFERENCES "payload_preferences"("id") ON DELETE cascade ON UPDATE no action;
 EXCEPTION
@@ -91,6 +125,7 @@ END $$;
 export async function down({ payload, req }: MigrateDownArgs): Promise<void> {
 await payload.db.drizzle.execute(sql`
  DROP TABLE "users";
+DROP TABLE "pages_key_messages_list";
 DROP TABLE "pages";
 DROP TABLE "media";
 DROP TABLE "payload_preferences";

@@ -1,5 +1,7 @@
 import { CollectionConfig, FieldHook } from 'payload'
 
+import { HTMLConverterFeature, lexicalEditor, lexicalHTML } from '@payloadcms/richtext-lexical'
+
 const format = (val: string): string =>
   val
     .replace(/ /g, '-')
@@ -35,7 +37,7 @@ export const PagesCollection: CollectionConfig = {
         position: 'sidebar',
       },
       hooks: {
-        beforeValidate: [formatSlug('title')],
+        beforeValidate: [formatSlug('page_title')],
       },
       required: true,
     },
@@ -64,7 +66,15 @@ export const PagesCollection: CollectionConfig = {
     },
     {
       name: 'key_message_1_body',
-      type: 'textarea',
+      type: 'richText',
+      editor: lexicalEditor({
+        features: ({ defaultFeatures }) => [
+          ...defaultFeatures,
+          // The HTMLConverter Feature is the feature which manages the HTML serializers.
+          // If you do not pass any arguments to it, it will use the default serializers.
+          HTMLConverterFeature({}),
+        ],
+      }),
     },
     {
       name: 'key_messages_title',
@@ -90,7 +100,7 @@ export const PagesCollection: CollectionConfig = {
     },
     {
       name: 'cta_1_body',
-      type: 'text',
+      type: 'textarea',
     },
     {
       name: 'cta_2_title',
@@ -98,7 +108,7 @@ export const PagesCollection: CollectionConfig = {
     },
     {
       name: 'cta_2_body',
-      type: 'text',
+      type: 'textarea',
     },
     {
       name: 'contact_form_title',
@@ -106,11 +116,8 @@ export const PagesCollection: CollectionConfig = {
     },
     {
       name: 'contact_form_body',
-      type: 'text',
+      type: 'textarea',
     },
-    {
-      name: 'content',
-      type: 'richText',
-    },
+    lexicalHTML('key_message_1_body', { name: 'key_message_1_body_html' }),
   ],
 }

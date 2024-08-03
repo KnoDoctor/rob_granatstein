@@ -71,22 +71,7 @@ export interface Page {
   banner_subtitle?: string | null;
   bio_photo: number | Media;
   key_message_1_title?: string | null;
-  key_message_1_body?: string | null;
-  key_messages_title?: string | null;
-  key_messages_list?:
-    | {
-        key_message_title?: string | null;
-        key_message_body?: string | null;
-        id?: string | null;
-      }[]
-    | null;
-  cta_1_title?: string | null;
-  cta_1_body?: string | null;
-  cta_2_title?: string | null;
-  cta_2_body?: string | null;
-  contact_form_title?: string | null;
-  contact_form_body?: string | null;
-  content?: {
+  key_message_1_body?: {
     root: {
       type: string;
       children: {
@@ -101,6 +86,21 @@ export interface Page {
     };
     [k: string]: unknown;
   } | null;
+  key_messages_title?: string | null;
+  key_messages_list?:
+    | {
+        key_message_title?: string | null;
+        key_message_body?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  cta_1_title?: string | null;
+  cta_1_body?: string | null;
+  cta_2_title?: string | null;
+  cta_2_body?: string | null;
+  contact_form_title?: string | null;
+  contact_form_body?: string | null;
+  key_message_1_body_html?: string | null;
   updatedAt: string;
   createdAt: string;
 }

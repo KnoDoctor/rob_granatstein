@@ -1,4 +1,5 @@
 export const revalidate = 5
+import parse from 'html-react-parser'
 
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
@@ -17,6 +18,8 @@ const Page = async () => {
     collection: 'pages',
     page: 1,
   })
+
+  console.log(page?.docs?.[0])
 
   return (
     <main className="flex-1">
@@ -67,7 +70,7 @@ const Page = async () => {
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl underline decoration-red-600">
               {page?.docs?.[0]?.key_message_1_title}
             </h2>
-            <p className="mt-4 text-muted-foreground">{page?.docs?.[0]?.key_message_1_body}</p>
+            {parse(page?.docs?.[0]?.key_message_1_body_html ?? '')}
           </div>
           <div>
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl underline decoration-red-600">

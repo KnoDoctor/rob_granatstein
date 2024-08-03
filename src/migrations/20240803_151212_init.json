@@ -1,5 +1,5 @@
 {
-  "id": "eeab5f1f-c52f-4598-a5c5-3debc4ce3545",
+  "id": "570ce5f8-b126-4473-b79a-46d63af2fd88",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "5",
   "dialect": "pg",
@@ -91,6 +91,75 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
+    "pages_key_messages_list": {
+      "name": "pages_key_messages_list",
+      "schema": "",
+      "columns": {
+        "_order": {
+          "name": "_order",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "_parent_id": {
+          "name": "_parent_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "id": {
+          "name": "id",
+          "type": "varchar",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "key_message_title": {
+          "name": "key_message_title",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "key_message_body": {
+          "name": "key_message_body",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {
+        "pages_key_messages_list_order_idx": {
+          "name": "pages_key_messages_list_order_idx",
+          "columns": [
+            "_order"
+          ],
+          "isUnique": false
+        },
+        "pages_key_messages_list_parent_id_idx": {
+          "name": "pages_key_messages_list_parent_id_idx",
+          "columns": [
+            "_parent_id"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "pages_key_messages_list_parent_id_fk": {
+          "name": "pages_key_messages_list_parent_id_fk",
+          "tableFrom": "pages_key_messages_list",
+          "tableTo": "pages",
+          "columnsFrom": [
+            "_parent_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
     "pages": {
       "name": "pages",
       "schema": "",
@@ -101,14 +170,86 @@
           "primaryKey": true,
           "notNull": true
         },
-        "title": {
-          "name": "title",
+        "slug": {
+          "name": "slug",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "page_title": {
+          "name": "page_title",
           "type": "varchar",
           "primaryKey": false,
           "notNull": false
         },
-        "content": {
-          "name": "content",
+        "banner_title": {
+          "name": "banner_title",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "banner_subtitle": {
+          "name": "banner_subtitle",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "bio_photo_id": {
+          "name": "bio_photo_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "key_message_1_title": {
+          "name": "key_message_1_title",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "key_message_1_body": {
+          "name": "key_message_1_body",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "key_messages_title": {
+          "name": "key_messages_title",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "cta_1_title": {
+          "name": "cta_1_title",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "cta_1_body": {
+          "name": "cta_1_body",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "cta_2_title": {
+          "name": "cta_2_title",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "cta_2_body": {
+          "name": "cta_2_body",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "contact_form_title": {
+          "name": "contact_form_title",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "contact_form_body": {
+          "name": "contact_form_body",
           "type": "jsonb",
           "primaryKey": false,
           "notNull": false
@@ -137,7 +278,21 @@
           "isUnique": false
         }
       },
-      "foreignKeys": {},
+      "foreignKeys": {
+        "pages_bio_photo_id_media_id_fk": {
+          "name": "pages_bio_photo_id_media_id_fk",
+          "tableFrom": "pages",
+          "tableTo": "media",
+          "columnsFrom": [
+            "bio_photo_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "set null",
+          "onUpdate": "no action"
+        }
+      },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
