@@ -9,6 +9,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'rob-granatstein.vercel.app',
       },
+      {
+        protocol: 'https',
+        hostname: 'www.robgranatstein.ca',
+      },
     ],
   },
   experimental: {

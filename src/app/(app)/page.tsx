@@ -137,7 +137,10 @@ const Page = async () => {
               <Input type="text" placeholder="Name" className="w-full" />
               <Input type="email" placeholder="Email" className="w-full" />
               <Textarea placeholder="Message" className="w-full" />
-              <Button type="submit" className="w-full bg-red-600">
+              <Button
+                type="submit"
+                className="w-full bg-red-600 transition-colors hover:bg-red-600/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
+              >
                 Submit
               </Button>
             </form>
