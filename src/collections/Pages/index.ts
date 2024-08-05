@@ -85,6 +85,25 @@ export const PagesCollection: CollectionConfig = {
       type: 'array',
       fields: [
         {
+          name: 'key_message_icon',
+          type: 'select',
+          hasMany: false,
+          options: [
+            {
+              label: 'Community',
+              value: 'user-group',
+            },
+            {
+              label: 'Governance',
+              value: 'building-library',
+            },
+            {
+              label: 'Leadership',
+              value: 'building-office-2',
+            },
+          ],
+        },
+        {
           name: 'key_message_title',
           type: 'text',
         },

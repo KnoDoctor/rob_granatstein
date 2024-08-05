@@ -89,6 +89,7 @@ export interface Page {
   key_messages_title?: string | null;
   key_messages_list?:
     | {
+        key_message_icon?: ('user-group' | 'building-library' | 'building-office-2') | null;
         key_message_title?: string | null;
         key_message_body?: string | null;
         id?: string | null;

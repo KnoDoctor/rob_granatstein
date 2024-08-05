@@ -90,11 +90,11 @@ export default buildConfig({
   },
 
   admin: {
-    autoLogin: {
-      email: 'dev@payloadcms.com',
-      password: 'test',
-      prefillOnly: true,
-    },
+    // autoLogin: {
+    //   email: 'dev@payloadcms.com',
+    //   password: 'test',
+    //   prefillOnly: true,
+    // },
   },
   async onInit(payload) {
     const existingUsers = await payload.find({

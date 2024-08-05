@@ -11,6 +11,20 @@ import configPromise from '@payload-config'
 import type { Media } from 'payload-types'
 import Image from 'next/image'
 
+import {
+  UserGroupIcon,
+  BuildingLibraryIcon,
+  BuildingOffice2Icon,
+  AdjustmentsVerticalIcon,
+} from '@heroicons/react/24/solid'
+
+const iconLookup = {
+  'user-group': <UserGroupIcon className="size-8 mr-4" />,
+  'building-library': <BuildingLibraryIcon className="size-8 mr-4" />,
+  'building-office-2': <BuildingOffice2Icon className="size-8 mr-4" />,
+  'adjustments-vertical': <AdjustmentsVerticalIcon className="size-8 mr-4" />,
+}
+
 const Page = async () => {
   const payload = await getPayloadHMR({ config: configPromise })
 
@@ -53,7 +67,7 @@ const Page = async () => {
           </div>
           <div className="flex justify-center">
             <Image
-              src={(page?.docs?.[0]?.bio_photo as Media)?.url ?? ''}
+              src={`${process.env.WEBSITE_URL}${(page?.docs?.[0]?.bio_photo as Media)?.url}` ?? ''}
               width="300"
               height="300"
               alt="Candidate"
@@ -74,11 +88,16 @@ const Page = async () => {
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl underline decoration-red-600">
               {page?.docs?.[0]?.key_messages_title}
             </h2>
-            <ul className="mt-4 space-y-2 text-muted-foreground">
+            <ul className="mt-4 space-y-16">
               {page?.docs?.[0]?.key_messages_list?.map((key_message) => {
                 return (
                   <li key={key_message?.id}>
-                    <h3 className="font-medium">{key_message?.key_message_title}</h3>
+                    <div className="flex">
+                      {iconLookup[key_message?.key_message_icon ?? 'adjustments-vertical']}
+                      <h3 className="text-lg font-bold tracking-tighter sm:text-xl md:text-2xl">
+                        {key_message?.key_message_title}
+                      </h3>
+                    </div>
                     <p>{key_message?.key_message_body}</p>
                   </li>
                 )
@@ -88,11 +107,10 @@ const Page = async () => {
         </div>
       </section>
       <section className="w-full py-6 md:py-12 lg:py-24 bg-muted">
-        <div className="container px-4 md:px-6 grid gap-6 md:grid-cols-2">
-          <div className="space-y-4">
+        <div className="container px-4 md:px-6 grid gap-6 place-items-center">
+          {/* <div className="space-y-4">
             <div className="bg-background rounded-md p-6 shadow-sm h-48">
               <h3 className="text-xl font-semibold underline decoration-red-600">
-                {' '}
                 {page?.docs?.[0]?.cta_1_title}
               </h3>
               <p className="mt-2 text-muted-foreground">{page?.docs?.[0]?.cta_1_body}</p>
@@ -109,8 +127,8 @@ const Page = async () => {
                 Donate
               </Button>
             </div>
-          </div>
-          <div className="bg-background rounded-md p-6 shadow-sm">
+          </div> */}
+          <div className="bg-background rounded-md p-6 shadow-sm max-w-[800px]">
             <h3 className="text-xl font-semibold underline decoration-red-600">
               {page?.docs?.[0]?.contact_form_title}
             </h3>

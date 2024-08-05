@@ -7,12 +7,12 @@ const Footer = () => {
         &copy; <a href={'https://www.epochnorth.ca'}>Epoch North</a>. All rights reserved.
       </span>
       <nav className="sm:ml-auto flex gap-4 sm:gap-6">
-        <Link href="#" className="text-xs hover:underline underline-offset-4" prefetch={false}>
+        {/* <Link href="#" className="text-xs hover:underline underline-offset-4" prefetch={false}>
           Privacy
         </Link>
         <Link href="#" className="text-xs hover:underline underline-offset-4" prefetch={false}>
           Terms
-        </Link>
+        </Link> */}
       </nav>
     </footer>
   )
