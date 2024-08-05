@@ -76,7 +76,7 @@ const Page = async () => {
           </div>
         </div>
       </section>
-      <section className="w-full py-6 md:py-12 lg:py-24">
+      <section className="w-full py-6 md:py-12 lg:py-24 key-messages">
         <div className="container px-4 md:px-6 grid gap-16 md:grid-cols-2">
           <div>
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl underline decoration-red-600">
