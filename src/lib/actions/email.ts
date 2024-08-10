@@ -54,7 +54,6 @@ export async function sendContactUsEmail(
 
   try {
     // EMAIL STUFF GOES HERE
-    console.log({ name, email, subject, message })
 
     const msg = {
       to: ['meagan.trush@gmail.com', 'barfieldjt@gmail.com'],
