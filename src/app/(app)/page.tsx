@@ -17,6 +17,7 @@ import {
   BuildingOffice2Icon,
   AdjustmentsVerticalIcon,
 } from '@heroicons/react/24/solid'
+import ContactUsForm from '@/components/ContactUsForm'
 
 const iconLookup = {
   'user-group': <UserGroupIcon className="size-8 mr-4" />,
@@ -133,17 +134,19 @@ const Page = async () => {
               {page?.docs?.[0]?.contact_form_title}
             </h3>
             <p className="mt-2 text-muted-foreground">{page?.docs?.[0]?.contact_form_body}</p>
-            <form className="mt-4 grid gap-4">
-              <Input type="text" placeholder="Name" className="w-full" />
-              <Input type="email" placeholder="Email" className="w-full" />
-              <Textarea placeholder="Message" className="w-full" />
+            <ContactUsForm />
+            {/* <form className="mt-4 grid gap-4">
+              <Input name="name" type="text" placeholder="Name" className="w-full" />
+              <Input name="email" type="email" placeholder="Email" className="w-full" />
+              <Input name="subject" type="text" placeholder="Subject" className="w-full" />
+              <Textarea name="message" placeholder="Message" className="w-full" />
               <Button
                 type="submit"
                 className="w-full bg-red-600 transition-colors hover:bg-red-600/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
               >
                 Submit
               </Button>
-            </form>
+            </form> */}
           </div>
         </div>
       </section>
