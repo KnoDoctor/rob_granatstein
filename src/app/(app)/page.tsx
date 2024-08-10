@@ -60,6 +60,38 @@ const Page = async () => {
       </section> */}
       <section className="w-full py-12 md:py-24 lg:py-32 bg-slate-100 ">
         <div className="container px-4 md:px-6 grid gap-6 md:grid-cols-2 items-center">
+          <div className="">
+            <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl mb-8">
+              {page?.docs?.[0]?.banner_title}
+            </h1>
+            <p className="text-xl font-medium mb-8">{page?.docs?.[0]?.banner_subtitle}</p>
+            {/* <Button
+              size={'lg'}
+              className="mr-8 bg-red-600 transition-colors hover:bg-red-600/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
+            >
+              Contact Rob
+            </Button>
+            <Button
+              size={'lg'}
+              className="mr-8 text-red-600 bg-transparent border-2 border-red-600 transition-colors hover:border-red-700/90 hover:bg-transparent hover:text-red-700/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
+            >
+              Learn More
+            </Button> */}
+            {/* <hr className="h-[2px] my-8 bg-slate-800 border-0 dark:bg-gray-700" /> */}
+          </div>
+          <div className="flex justify-center">
+            <Image
+              src={`${process.env.WEBSITE_URL}${(page?.docs?.[0]?.bio_photo as Media)?.url}` ?? ''}
+              width="300"
+              height="300"
+              alt="Candidate"
+              className="rounded-full w-[200px] h-[200px] md:w-[300px] md:h-[300px] object-cover"
+            />
+          </div>
+        </div>
+      </section>
+      {/* <section className="w-full py-12 md:py-24 lg:py-32 bg-slate-100 ">
+        <div className="container px-4 md:px-6 grid gap-6 md:grid-cols-2 items-center">
           <div className="space-y-2">
             <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
               {page?.docs?.[0]?.banner_title}
@@ -76,7 +108,7 @@ const Page = async () => {
             />
           </div>
         </div>
-      </section>
+      </section> */}
       <section className="w-full py-6 md:py-12 lg:py-24 key-messages">
         <div className="container px-4 md:px-6 grid gap-16 md:grid-cols-2">
           <div>
